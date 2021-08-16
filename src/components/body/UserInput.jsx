@@ -1,10 +1,23 @@
+import { useState } from "react";
 import styled from "@emotion/styled";
 
 const UserInput = () => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = ({ target: { value } }) => {
+    setInputValue(value);
+  };
+
+  const handleEnterButtonClick = () => {
+    setInputValue("");
+  };
+
   return (
     <UserInputLayout>
-      <UserInputBox />
-      <UserInputSubmitButton>Enter</UserInputSubmitButton>
+      <UserInputBox value={inputValue} onChange={handleInputChange} />
+      <UserInputEnterButton onClick={handleEnterButtonClick}>
+        Enter
+      </UserInputEnterButton>
     </UserInputLayout>
   );
 };
@@ -23,7 +36,7 @@ const UserInputBox = styled.input`
   border-bottom: 1px solid black;
 `;
 
-const UserInputSubmitButton = styled.button`
+const UserInputEnterButton = styled.button`
   width: 20%;
   height: 40px;
   margin: 1rem;
