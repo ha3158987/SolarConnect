@@ -9,7 +9,8 @@ import { GlobalContext } from "utils/context/context.js";
 import sortReducer from "utils/context/sortReducer.js";
 
 const initialGlobalState = {
-  inputValue: "",
+  inputString: "",
+  inputNumbers: [],
 };
 
 const MainPage = () => {

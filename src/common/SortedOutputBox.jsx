@@ -1,48 +1,52 @@
 import styled from "@emotion/styled";
 
-const SortedOutputBox = () => {
-  const testNumber = [2, 3, 5, 1, 2, 4];
-  const testNumber2 = [2, 3, 5, 1, 2, 4];
-  let temp = 0;
-
-  // 오름차순
-  const descending = () => {
-    for (let i = 0; i < testNumber2.length; i++) {
-      for (let j = i + 1; j < testNumber2.length; j++) {
-        if (testNumber2[i] > testNumber2[j]) {
-          let temp = testNumber2[i];
-          testNumber2[i] = testNumber2[j];
-          testNumber2[j] = temp;
-        }
-      }
-    }
-    return testNumber2;
+const SortedOutputBox = ({ numbers, direction }) => {
+  const arrangeNumbers = () => {
+    const arrangedNumberArr =
+      direction === "ascending"
+        ? arrangeAscendingOrder(numbers)
+        : arrangeDescendingOrder(numbers);
+    return addCommasToNumbers(arrangedNumberArr);
   };
 
-  // 내림차순
-  const ascending = () => {
-    for (let i = 0; i < testNumber.length; i++) {
-      for (let j = i + 1; j < testNumber.length; j++) {
-        if (testNumber[i] < testNumber[j]) {
-          let temp = testNumber[i];
-          testNumber[i] = testNumber[j];
-          testNumber[j] = temp;
+  const arrangeAscendingOrder = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i] > arr[j]) {
+          [arr[i], arr[j]] = [arr[j], arr[i]];
         }
-        console.log(testNumber);
       }
     }
-    return testNumber;
+    return arr;
+  };
+
+  const arrangeDescendingOrder = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i] < arr[j]) {
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+      }
+    }
+    return arr;
+  };
+
+  const addCommasToNumbers = (arr) => {
+    return arr.map((num, idx) => {
+      return idx < arr.length - 1 ? `${num}${", "}` : `${num}`;
+    });
   };
 
   return (
     <SortedContainer>
-      <SortedLayout>{descending()}</SortedLayout>
+      <SortedLayout>{arrangeNumbers()}</SortedLayout>
     </SortedContainer>
   );
 };
 
 const SortedContainer = styled.div`
   width: 100%;
+  height: 2.5rem;
   margin: 1rem;
 `;
 

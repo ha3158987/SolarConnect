@@ -4,26 +4,40 @@ import styled from "@emotion/styled";
 import { GlobalContext } from "utils/context/context.js";
 
 const UserInput = () => {
-  // let timeout = setTimeout(() => alert("hello"), 3000);
   const { globalState, globalDispatch } = useContext(GlobalContext);
 
   const handleInputChange = ({ target: { value } }) => {
     globalDispatch({
       type: "SET_INPUT_VALUE",
       payload: {
-        inputValue: value,
+        inputString: value,
       },
     });
   };
 
   const handleEnterButtonClick = () => {
-    //inputData로 계산하는 로직
-
-    //인풋창 reset
+    const inputNumbers = convertStrToNumberArr(globalState.inputString);
     globalDispatch({
       type: "SET_INPUT_VALUE",
       payload: {
-        inputValue: "",
+        inputNumbers: inputNumbers,
+      },
+    });
+
+    resetInputData();
+  };
+
+  const convertStrToNumberArr = (string) => {
+    const parsedArr = string.split(",");
+    const numberArr = parsedArr.map((str) => Number(str));
+    return numberArr;
+  };
+
+  const resetInputData = () => {
+    globalDispatch({
+      type: "SET_INPUT_VALUE",
+      payload: {
+        inputString: "",
       },
     });
   };
@@ -31,7 +45,7 @@ const UserInput = () => {
   return (
     <UserInputLayout>
       <UserInputBox
-        value={globalState.inputValue}
+        value={globalState.inputString}
         onChange={handleInputChange}
       />
       <UserInputEnterButton onClick={handleEnterButtonClick}>
