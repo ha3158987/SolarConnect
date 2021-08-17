@@ -4,7 +4,8 @@
 
 ### 🏕 배포 주소
 
-- 아래 URL을 클릭하면 배포된 페이지로 이동합니다.
+- 아래 URL을 클릭하면 배포된 페이지로 이동합니다. <br>
+  https://sorting-machine.herokuapp.com/
 
 ---
 
