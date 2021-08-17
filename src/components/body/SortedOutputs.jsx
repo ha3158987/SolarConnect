@@ -6,12 +6,19 @@ import { GlobalContext } from "utils/context/context.js";
 
 const SortedOutputs = () => {
   const { globalState } = useContext(GlobalContext);
-  const { inputNumbers } = globalState;
+  const { inputNumbers, isTimeUp } = globalState;
 
   return (
     <>
-      <SortedOutputBox numbers={inputNumbers} direction={"ascending"} />
-      <SortedOutputBox numbers={inputNumbers} direction={"descending"} />
+      {inputNumbers && (
+        <>
+          <SortedOutputBox numbers={inputNumbers} direction={"ascending"} />
+          <SortedOutputBox
+            numbers={isTimeUp && inputNumbers}
+            direction={"descending"}
+          />
+        </>
+      )}
     </>
   );
 };

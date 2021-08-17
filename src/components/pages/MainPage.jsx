@@ -11,6 +11,7 @@ import sortReducer from "utils/context/sortReducer.js";
 const initialGlobalState = {
   inputString: "",
   inputNumbers: [],
+  isTimeUp: false,
 };
 
 const MainPage = () => {

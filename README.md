@@ -47,12 +47,12 @@ yarn start
 #### 입력
 
 - [x] 사용자의 입력 데이터 받기
-- [ ] 잘못된 형식의 입력 데이터 예외처리하기
+- [x] 잘못된 형식의 입력 데이터 예외처리하기
 
 #### 시작
 
 - [x] 사용자가 버튼을 누르는 순간 소팅이 시작되게 하기
-- [] [4. 결과 필드]에 바로 노출 되고 3초 후에 [5. 결과 필드]에 결과가 노출 되게 하기
+- [x] [4. 결과 필드]에 바로 노출 되고 3초 후에 [5. 결과 필드]에 결과가 노출 되게 하기
 
 #### 결과
 
@@ -66,3 +66,8 @@ yarn start
 - [x] React.JS로 구현하기
 - [x] 기획서 참고하여 레이아웃 짜고 UI 구현하기
 - [x] Context API 및 Reducer함수 이용해 전역상태 관리하기
+
+#### 참고한 레퍼런스
+
+- 정렬 알고리즘: https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=gi_balja&logNo=221245300411
+- Context API: https://react.vlpt.us/basic/22-context-dispatch.html
