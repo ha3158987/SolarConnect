@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styled from "@emotion/styled";
 
 const SortedOutputBox = () => {
   const testNumber = [2, 3, 5, 1, 2, 4];
@@ -33,16 +34,24 @@ const SortedOutputBox = () => {
     }
     return testNumber;
   };
-  
+
   return (
-  <div>
-    <div>
+  <SortedContainer>
+    <SortedLayout>
       {descending()}
-    </div>
-    <div>
-      {ascending()}
-    </div>
-  </div>);
+    </SortedLayout>
+  </SortedContainer>
+  );
 };
+
+const SortedContainer = styled.div`
+  display: flex;
+  margin : 1rem;
+`;
+
+const SortedLayout = styled.div`
+  display: flex;
+  margin : 1rem;
+`;
 
 export default SortedOutputBox;
