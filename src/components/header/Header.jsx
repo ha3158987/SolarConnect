@@ -1,10 +1,16 @@
+import styled from "@emotion/styled";
+import { ReactComponent as Logo } from "icons/logo.svg";
+
 const Header = () => {
   return (
-    <div>
-      <h1>Sollar Connect</h1>
-    </div>
-  )
-  
+    <HeaderLayout>
+      <Logo />
+    </HeaderLayout>
+  );
 };
+
+const HeaderLayout = styled.header`
+  margin: 1.5rem;
+`;
 
 export default Header;
