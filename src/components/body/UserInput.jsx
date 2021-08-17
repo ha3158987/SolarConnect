@@ -1,20 +1,37 @@
-import { useState } from "react";
+import { useContext } from "react";
 import styled from "@emotion/styled";
+import { GlobalContext } from "utils/context/context.js";
 
 const UserInput = () => {
-  const [inputValue, setInputValue] = useState("");
+  const { globalState, globalDispatch } = useContext(GlobalContext);
 
   const handleInputChange = ({ target: { value } }) => {
-    setInputValue(value);
+    globalDispatch({
+      type: "SET_INPUT_VALUE",
+      payload: {
+        inputValue: value,
+      },
+    });
   };
 
   const handleEnterButtonClick = () => {
-    setInputValue("");
+    //inputData로 계산하는 로직
+
+    //인풋창 reset
+    globalDispatch({
+      type: "SET_INPUT_VALUE",
+      payload: {
+        inputValue: "",
+      },
+    });
   };
 
   return (
     <UserInputLayout>
-      <UserInputBox value={inputValue} onChange={handleInputChange} />
+      <UserInputBox
+        value={globalState.inputValue}
+        onChange={handleInputChange}
+      />
       <UserInputEnterButton onClick={handleEnterButtonClick}>
         Enter
       </UserInputEnterButton>
