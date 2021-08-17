@@ -1,15 +1,17 @@
 import reset from "style/reset.js";
 import { Global } from "@emotion/react";
 
-import UserInput from "components/body/UserInput";
+import Header from "components/header/Header";
+import MainPage from "components/pages/MainPage";
 
-function App() {
+const App = () => {
   return (
     <>
       <Global styles={reset} />
-      <UserInput />
+      <Header />
+      <MainPage />
     </>
   );
-}
+};
 
 export default App;
