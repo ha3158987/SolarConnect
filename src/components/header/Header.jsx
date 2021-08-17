@@ -1,5 +1,10 @@
 const Header = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>Sollar Connect</h1>
+    </div>
+  )
+  
 };
 
 export default Header;
