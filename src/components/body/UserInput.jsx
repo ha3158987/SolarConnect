@@ -12,19 +12,34 @@ const UserInput = () => {
     globalDispatch({
       type: "SET_INPUT_VALUE",
       payload: {
-        inputValue: value,
+        inputString: value,
       },
     });
   };
 
   const handleEnterButtonClick = () => {
-    //inputData로 계산하는 로직
-
-    //인풋창 reset
+    const inputNumbers = convertStrToNumberArr(globalState.inputString);
     globalDispatch({
       type: "SET_INPUT_VALUE",
       payload: {
-        inputValue: "",
+        inputNumbers: inputNumbers,
+      },
+    });
+
+    resetInputData();
+  };
+
+  const convertStrToNumberArr = (string) => {
+    const parsedArr = string.split(",");
+    const numberArr = parsedArr.map((str) => Number(str));
+    return numberArr;
+  };
+
+  const resetInputData = () => {
+    globalDispatch({
+      type: "SET_INPUT_VALUE",
+      payload: {
+        inputString: "",
       },
     });
   };
@@ -54,7 +69,7 @@ const UserInput = () => {
     <>
     <UserInputLayout>
       <UserInputBox
-        value={globalState.inputValue}
+        value={globalState.inputString}
         onChange={handleInputChange}
         placeholder="입력양식 : 11,7,32,4,"
         type="text"

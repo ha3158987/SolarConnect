@@ -1,19 +1,17 @@
 import { useContext } from "react";
-import styled from "@emotion/styled";
 
-import SortedOutput from "common/SortedOutputBox";
+import SortedOutputBox from "common/SortedOutputBox";
 
 import { GlobalContext } from "utils/context/context.js";
 
 const SortedOutputs = () => {
-  const { globalState, globalDispatch } = useContext(GlobalContext);
-
-  console.log(globalState);
+  const { globalState } = useContext(GlobalContext);
+  const { inputNumbers } = globalState;
 
   return (
     <>
-      <SortedOutput />
-      <SortedOutput timeout />
+      <SortedOutputBox numbers={inputNumbers} direction={"ascending"} />
+      <SortedOutputBox numbers={inputNumbers} direction={"descending"} />
     </>
   );
 };
