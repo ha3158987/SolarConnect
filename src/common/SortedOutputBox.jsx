@@ -1,4 +1,6 @@
+import { useState, useEffect, useContext } from "react";
 import styled from "@emotion/styled";
+import { keyframes } from "@emotion/react";
 import useSort from "utils/hooks/useSort.js";
 
 const SortedOutputBox = ({ numbers, direction }) => {
@@ -17,6 +19,15 @@ const SortedOutputBox = ({ numbers, direction }) => {
   );
 };
 
+const animation = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 const SortedContainer = styled.div`
   width: 100%;
   height: 2.5rem;
@@ -25,6 +36,8 @@ const SortedContainer = styled.div`
 
 const SortedLayout = styled.div`
   margin: 1rem;
+  animation: ${animation} 3s ease-in-out;
+  animation-fill-mode: forwards;
 `;
 
 export default SortedOutputBox;
