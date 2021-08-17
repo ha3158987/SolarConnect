@@ -1,18 +1,25 @@
 import styled from "@emotion/styled";
+import Timer from "common/UTCTimer";
+import SortedOutput from "common/SortedOutputBox";
+
 
 const UserInput = () => {
   return (
+    <>
     <UserInputLayout>
+      <Timer></Timer>
       <UserInputBox />
       <UserInputSubmitButton>Enter</UserInputSubmitButton>
+      <SortedOutput></SortedOutput>
     </UserInputLayout>
+    </>
   );
 };
 
 const UserInputLayout = styled.div`
-  display: flex;
   width: 800px;
   border: 1px solid black;
+  margin: auto;
 `;
 
 const UserInputBox = styled.input`

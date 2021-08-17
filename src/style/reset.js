@@ -5,6 +5,7 @@ const reset = css`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    background-color: rgb(249, 249, 249);
   }
   a {
     text-decoration: none;
@@ -24,6 +25,7 @@ const reset = css`
   input: focus {
     outline: none;
   }
+
 `;
 
 export default reset;
