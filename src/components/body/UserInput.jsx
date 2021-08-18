@@ -8,24 +8,31 @@ import { GlobalContext } from "utils/context/context.js";
 const UserInput = () => {
   const { globalState, globalDispatch } = useContext(GlobalContext);
   const initialError = {
-    errorMsg: "",
+    inputValue: "",
   };
   const [errors, setErrors] = useState(initialError);
 
-  const checkValidation = (value) => {
-    setErrors({
-      ...errors,
-      errorMsg: numValidation(value).message,
-    });
+  const checkValidation = (e) => {
+    const { name } = e.target;
+
+    switch (name) {
+      case "inputValue":
+        setErrors({
+          ...errors,
+          [name]: numValidation(globalState.inputValue).message,
+        });
+        return false;
+      default:
+        <ErrorMessage>입력 오류 메시지 정보가 없습니다.</ErrorMessage>;
+    }
   };
 
   const handleInputChange = ({ target: { value } }) => {
-    checkValidation(value);
-
     globalDispatch({
       type: "SET_INPUT_VALUE",
       payload: {
         inputString: value,
+        isTimeUp: false,
       },
     });
   };
@@ -67,29 +74,13 @@ const UserInput = () => {
     });
   };
 
-  // const checkValidation = (e) => {
-  //   const { name } = e.target;
-  //   console.log(name);
-
-  //   switch (name) {
-  //     case "inputValue":
-  //       setErrors({
-  //         ...errors,
-  //         [name]: numValidation(globalState.inputValue).message,
-  //       });
-  //       return false;
-  //     default:
-  //       <ErrorMessage>입력 오류 메시지 정보가 없습니다.</ErrorMessage>;
-  //   }
-  // };
-
   return (
     <>
       <UserInputLayout>
         <UserInputBox
           value={globalState.inputString}
           onChange={handleInputChange}
-          placeholder=" 입력양식 : 11,7,32,4,"
+          placeholder=" 입력양식 예: 11,7,32,4"
           type="text"
           name="inputValue"
           onBlur={checkValidation}
